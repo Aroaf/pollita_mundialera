@@ -16878,7 +16878,7 @@
 
       filas.forEach((fila) => {
         const celdas = Array.from(fila.cells).map((td) => normalizar(td.textContent));
-        const objetivo = celdas.join(' ');
+        const objetivo = indiceParticipanteTabla >= 0 ? celdas[indiceParticipanteTabla] : '';
         const valorParticipante = indiceParticipanteTabla >= 0 ? (celdas[indiceParticipanteTabla] || '') : '';
         const valorGrupo = indiceGrupoTabla >= 0 ? (celdas[indiceGrupoTabla] || '') : '';
         const valorLocal = indiceLocalTabla >= 0 ? (celdas[indiceLocalTabla] || '') : '';
