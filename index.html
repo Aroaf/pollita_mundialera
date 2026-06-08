@@ -16777,7 +16777,7 @@
           const etiquetaResultados = actualizados === 1 ? '1 resultado oficial' : `${actualizados} resultados oficiales`;
           estadoGuardado.textContent = actualizados > 0
             ? `Grupo ${grupo} actualizado con ${etiquetaResultados} (${fechaCarga}).`
-            : `No se encontraron resultados oficiales para los ID_PARTIDO del grupo ${grupo}.`;
+            : `No se encontraron resultados oficiales para los partidos del grupo ${grupo}.`;
           renderContenidoPrincipal();
         } catch (error) {
           estadoGuardado.textContent = `No se pudieron cargar los resultados oficiales: ${error.message || error}`;
