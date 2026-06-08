@@ -411,7 +411,7 @@
         <div class='filtros'>
           <input id='filtroTexto' type='text' placeholder='Buscar texto en la tabla'>
           <select id='filtroParticipante'>
-            <option value='todos'>Todos los participantes</option><option value='Ariel'>Ariel</option><option value='Camilo'>Camilo</option><option value='Carito'>Carito</option><option value='Claudio Padilla'>Claudio Padilla</option><option value='Dani'>Daniela</option><option value='Diego Toledo'>Diego Toledo</option><option value='Felipe Bustos'>Felipe Bustos</option><option value='Felipe HD'>Felipe HD</option><option value='Grace'>Grace</option><option value='Karen Garrido'>Karen Garrido</option><option value='Lando'>Lando</option><option value='Leo'>Leo</option><option value='Marcelitocuerdas'>Marcelitocuerdas</option><option value='María Isabel'>María Isabel</option><option value='Miry'>Miry</option><option value='Pablo Meliqueo'>Pablo Meliqueo</option><option value='Papasote ALV'>Papasote ALV</option><option value='Rocio'>Rocio</option><option value='Rodrigo Arriaza'>Rodrigo Arriaza</option><option value='Sergio Luigi'>Sergio Luigi</option><option value='Simón Arce (Marrosquino)'>Simón Arce (Marrosquino)</option><option value='Stuart'>Stuart</option>
+            <option value='todos'>Todos los participantes</option><option value='Ariel'>Ariel</option><option value='Camilo'>Camilo</option><option value='Carito'>Carito</option><option value='Claudio Padilla'>Claudio Padilla</option><option value='Daniela'>Daniela</option><option value='Diego Toledo'>Diego Toledo</option><option value='Felipe Bustos'>Felipe Bustos</option><option value='Felipe HD'>Felipe HD</option><option value='Grace'>Grace</option><option value='Karen Garrido'>Karen Garrido</option><option value='Lando'>Lando</option><option value='Leo'>Leo</option><option value='Marcelitocuerdas'>Marcelitocuerdas</option><option value='María Isabel'>María Isabel</option><option value='Miry'>Miry</option><option value='Pablo Meliqueo'>Pablo Meliqueo</option><option value='Papasote ALV'>Papasote ALV</option><option value='Rocio'>Rocio</option><option value='Rodrigo Arriaza'>Rodrigo Arriaza</option><option value='Sergio Luigi'>Sergio Luigi</option><option value='Simón Arce (Marrosquino)'>Simón Arce (Marrosquino)</option><option value='Stuart'>Stuart</option>
           </select>
           <select id='filtroGrupo'>
             <option value='todos'>Todos los grupos</option><option value='A'>A</option><option value='B'>B</option><option value='C'>C</option><option value='D'>D</option><option value='E'>E</option><option value='F'>F</option><option value='G'>G</option><option value='H'>H</option><option value='I'>I</option><option value='J'>J</option><option value='K'>K</option><option value='L'>L</option>
@@ -16888,7 +16888,7 @@
         const coincideParticipante = participanteSeleccionado === 'todos' || valorParticipante === participanteSeleccionado;
         const coincideGrupo = grupoSeleccionado === 'todos' || valorGrupo === grupoSeleccionado;
         const coincidePartido = partidoSeleccionado === 'todos' || valorPartido === partidoSeleccionado;
-        const coincide = coincideTexto && coincideParticipante && coincideGrupo && coincidePartido;
+        const coincide = coincideTexto && coincideParticipante;
 
         fila.style.display = coincide ? '' : 'none';
         if (coincide) visibles += 1;
