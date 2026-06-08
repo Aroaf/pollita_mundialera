@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang='es'>
 <head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1.8/dist/CountryFlagEmojiPolyfill.css">
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>Polla Mundial 2026 - Detalle de apuestas</title>
@@ -24,7 +25,7 @@
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: var(--texto);
       background:
         radial-gradient(circle at 15% 18%, rgba(255, 255, 255, 0.25), transparent 22%),
@@ -16286,6 +16287,32 @@
   </div>
 
   <script>
+    const BANDERAS = {
+      "México": "mx", "Sudáfrica": "za", "Corea del Sur": "kr", "Chequia": "cz",
+      "Canadá": "ca", "Bosnia H.": "ba", "Catar": "qa", "Suiza": "ch",
+      "Brasil": "br", "Marruecos": "ma", "Haití": "ht", "Escocia": "gb-sct",
+      "Estados Unidos": "us", "Paraguay": "py", "Australia": "au", "Turquía": "tr",
+      "Alemania": "de", "Curazao": "cw", "Costa de Marfil": "ci", "Ecuador": "ec",
+      "Paises Bajos": "nl", "Japón": "jp", "Suecia": "se", "Túnez": "tn",
+      "Irán": "ir", "Nueva Zelanda": "nz", "Bélgica": "be", "Egipto": "eg",
+      "Arabia Saudita": "sa", "Uruguay": "uy", "España": "es", "Cabo Verde": "cv",
+      "Irak": "iq", "Noruega": "no", "Francia": "fr", "Senegal": "sn",
+      "Austria": "at", "Jordania": "jo", "Argentina": "ar", "Argelia": "dz",
+      "Uzbekistán": "uz", "Colombia": "co", "Portugal": "pt", "R.D. del Congo": "cd",
+      "Ghana": "gh", "Panamá": "pa", "Inglaterra": "gb-eng", "Croacia": "hr"
+    };
+
+    function obtenerHtmlConBandera(nombrePais) {
+      if (!nombrePais) return '';
+      const paisLimpio = nombrePais.trim();
+      const codigo = BANDERAS[paisLimpio];
+      
+      if (codigo) {
+        // Retornamos la etiqueta de imagen de la bandera + el nombre del país
+        return `<img src="https://flagcdn.com/16x12/${codigo}.png" style="vertical-align: middle; margin-right: 8px; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.2);"> ${paisLimpio}`;
+      }
+      return paisLimpio;
+    }
     const grupos = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
     const tabs = ['PUNTAJES', ...grupos];
     const seedGrupos = {"A": [{"partido": 1, "idPartido": "M_1", "local": "México", "visita": "Sudáfrica", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_2", "local": "Corea del Sur", "visita": "Chequia", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_3", "local": "México", "visita": "Corea del Sur", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_4", "local": "Chequia", "visita": "Sudáfrica", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_5", "local": "Sudáfrica", "visita": "Corea del Sur", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_6", "local": "Chequia", "visita": "México", "golLocal": "", "golVisita": ""}], "B": [{"partido": 1, "idPartido": "M_7", "local": "Canadá", "visita": "Bosnia H.", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_8", "local": "Catar", "visita": "Suiza", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_9", "local": "Suiza", "visita": "Bosnia H.", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_10", "local": "Canadá", "visita": "Catar", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_11", "local": "Bosnia H.", "visita": "Catar", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_12", "local": "Suiza", "visita": "Canadá", "golLocal": "", "golVisita": ""}], "C": [{"partido": 1, "idPartido": "M_13", "local": "Brasil", "visita": "Marruecos", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_14", "local": "Haití", "visita": "Escocia", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_15", "local": "Escocia", "visita": "Marruecos", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_16", "local": "Brasil", "visita": "Haití", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_17", "local": "Escocia", "visita": "Brasil", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_18", "local": "Marruecos", "visita": "Haití", "golLocal": "", "golVisita": ""}], "D": [{"partido": 1, "idPartido": "M_19", "local": "Estados Unidos", "visita": "Paraguay", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_20", "local": "Australia", "visita": "Turquía", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_21", "local": "Estados Unidos", "visita": "Australia", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_22", "local": "Turquía", "visita": "Paraguay", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_23", "local": "Turquía", "visita": "Estados Unidos", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_24", "local": "Paraguay", "visita": "Australia", "golLocal": "", "golVisita": ""}], "E": [{"partido": 1, "idPartido": "M_25", "local": "Alemania", "visita": "Curazao", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_26", "local": "Costa de Marfil", "visita": "Ecuador", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_27", "local": "Alemania", "visita": "Costa de Marfil", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_28", "local": "Ecuador", "visita": "Curazao", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_29", "local": "Curazao", "visita": "Costa de Marfil", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_30", "local": "Ecuador", "visita": "Alemania", "golLocal": "", "golVisita": ""}], "F": [{"partido": 1, "idPartido": "M_31", "local": "Paises Bajos", "visita": "Japón", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_32", "local": "Suecia", "visita": "Túnez", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_34", "local": "Paises Bajos", "visita": "Suecia", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_33", "local": "Túnez", "visita": "Japón", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_35", "local": "Túnez", "visita": "Paises Bajos", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_36", "local": "Japón", "visita": "Suecia", "golLocal": "", "golVisita": ""}], "G": [{"partido": 1, "idPartido": "M_37", "local": "Irán", "visita": "Nueva Zelanda", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_38", "local": "Bélgica", "visita": "Egipto", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_39", "local": "Bélgica", "visita": "Irán", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_40", "local": "Nueva Zelanda", "visita": "Egipto", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_41", "local": "Nueva Zelanda", "visita": "Bélgica", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_42", "local": "Egipto", "visita": "Irán", "golLocal": "", "golVisita": ""}], "H": [{"partido": 1, "idPartido": "M_43", "local": "Arabia Saudita", "visita": "Uruguay", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_44", "local": "España", "visita": "Cabo Verde", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_45", "local": "Uruguay", "visita": "Cabo Verde", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_46", "local": "España", "visita": "Arabia Saudita", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_47", "local": "Uruguay", "visita": "España", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_48", "local": "Cabo Verde", "visita": "Arabia Saudita", "golLocal": "", "golVisita": ""}], "I": [{"partido": 1, "idPartido": "M_49", "local": "Irak", "visita": "Noruega", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_50", "local": "Francia", "visita": "Senegal", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_51", "local": "Noruega", "visita": "Senegal", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_52", "local": "Francia", "visita": "Irak", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_53", "local": "Noruega", "visita": "Francia", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_54", "local": "Senegal", "visita": "Irak", "golLocal": "", "golVisita": ""}], "J": [{"partido": 1, "idPartido": "M_56", "local": "Argentina", "visita": "Argelia", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_55", "local": "Austria", "visita": "Jordania", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_57", "local": "Jordania", "visita": "Argelia", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_58", "local": "Argentina", "visita": "Austria", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_59", "local": "Jordania", "visita": "Argentina", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_60", "local": "Argelia", "visita": "Austria", "golLocal": "", "golVisita": ""}], "K": [{"partido": 1, "idPartido": "M_61", "local": "Uzbekistán", "visita": "Colombia", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_62", "local": "Portugal", "visita": "R.D. del Congo", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_63", "local": "Colombia", "visita": "R.D. del Congo", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_64", "local": "Portugal", "visita": "Uzbekistán", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_65", "local": "Colombia", "visita": "Portugal", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_66", "local": "R.D. del Congo", "visita": "Uzbekistán", "golLocal": "", "golVisita": ""}], "L": [{"partido": 1, "idPartido": "M_67", "local": "Ghana", "visita": "Panamá", "golLocal": "", "golVisita": ""}, {"partido": 2, "idPartido": "M_68", "local": "Inglaterra", "visita": "Croacia", "golLocal": "", "golVisita": ""}, {"partido": 3, "idPartido": "M_69", "local": "Panamá", "visita": "Croacia", "golLocal": "", "golVisita": ""}, {"partido": 4, "idPartido": "M_70", "local": "Inglaterra", "visita": "Ghana", "golLocal": "", "golVisita": ""}, {"partido": 5, "idPartido": "M_71", "local": "Panamá", "visita": "Inglaterra", "golLocal": "", "golVisita": ""}, {"partido": 6, "idPartido": "M_72", "local": "Croacia", "visita": "Ghana", "golLocal": "", "golVisita": ""}]};
@@ -16703,21 +16730,23 @@
               <th class='th-orden-grupo ${ordenGrupoActual.col === 'golVisita' ? `orden-activo ${ordenGrupoActual.dir === 'desc' ? 'orden-desc' : ''}` : ''}' data-col='golVisita'>Goles visita</th>
             </tr>
           </thead>
+          <!-- Raul KK -->
           <tbody>
-            ${filasConIndice
-              .map(
-                ({ p, idx }) => `
-              <tr>
-                <td>${p.partido}</td>
-                <td><span class='equipo-fijo'>${escapeHtml(p.local)}</span></td>
-                <td><input type='number' min='0' data-idx='${idx}' data-campo='golLocal' value='${escapeHtml(p.golLocal)}'></td>
-                <td><span class='equipo-fijo'>${escapeHtml(p.visita)}</span></td>
-                <td><input type='number' min='0' data-idx='${idx}' data-campo='golVisita' value='${escapeHtml(p.golVisita)}'></td>
-              </tr>
-            `
-              )
-              .join('')}
-          </tbody>
+        ${filasConIndice
+          .map(
+            ({ p, idx }) => `
+          <tr>
+            <td>${p.partido}</td>
+            <td class='equipo-fijo'>${obtenerHtmlConBandera(p.local)}</td>
+            <td style='padding: 0; text-align: center;'><input data-grupo='${grupoActivo}' data-idpartido='${p.idPartido}' data-idx='${idx}' data-tipo='local' max='20' min='0' type='number' value='${p.golLocal}'></td>
+            <td class='equipo-fijo'>${obtenerHtmlConBandera(p.visita)}</td>
+            <td style='padding: 0; text-align: center;'><input data-grupo='${grupoActivo}' data-idpartido='${p.idPartido}' data-idx='${idx}' data-tipo='visita' max='20' min='0' type='number' value='${p.golVisita}'></td>
+          </tr>
+        `
+          )
+          .join('')}
+        </tbody>
+      <!-- Raul KK -->
         </table>
         <div class='acciones-grupo'>
           <button type='button' class='btn-sec' id='cargarResultadosOficiales'>Cargar resultados oficiales</button>
