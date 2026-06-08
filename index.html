@@ -399,6 +399,7 @@
       <p class='subtitulo'>Detalle completo de apuestas y panel de resultados por grupo.</p>
     </div>
 
+
     <div class='bloque'>
       <h2>Resultados por grupo</h2>
       <div class='tabs' id='tabsGrupos'></div>
@@ -407,7 +408,7 @@
     </div>
 
     <details class='bloque bloque-colapsable' id='bloqueDetalleApuestas'>
-      <summary>Detalle completo de apuestas</summary>
+      <summary>Detalle completo de apuestas 🤑</summary>
       <div class='bloque-contenido'>
         <div class='filtros'>
           <input id='filtroTexto' type='text' placeholder='Buscar texto en la tabla'>
@@ -16283,7 +16284,7 @@
     </details>
 
     <p class='pie'>@roa</p>
-    <p class='pie'>Powered by LuigiBET</p>
+    <p class='pie' style='font-size: 16px; font-weight: bold; color: #ffffff;'>Powered by LuigiBET (c)</p>
   </div>
 
   <script>
@@ -16646,9 +16647,9 @@
           <span>Clasifican los primeros 11; el resto queda descalificado.</span>
         </div>
         <div class='leyenda-puntajes'>
-          <span class='leyenda-chip'><span class='leyenda-color' style='background:#39d353;'></span>Clasifica</span>
-          <span class='leyenda-chip'><span class='leyenda-color' style='background:#ff4d4f;'></span>Descalificado</span>
-          <span class='leyenda-chip'><span class='leyenda-color' style='background:#facc15;'></span>Distinción honorífica</span>
+          <span class='leyenda-chip'><span class='leyenda-color' style='background:#39d353;'></span>Clasifica  🏆</span>
+          <span class='leyenda-chip'><span class='leyenda-color' style='background:#ff4d4f;'></span>Descalificado  💀</span>
+          <span class='leyenda-chip'><span class='leyenda-color' style='background:#facc15;'></span>Distinción honorífica  🍄 </span>
         </div>
         <table class='tabla tabla-puntajes'>
           <thead>
@@ -16738,14 +16739,18 @@
           <tr>
             <td>${p.partido}</td>
             <td class='equipo-fijo'>${obtenerHtmlConBandera(p.local)}</td>
-            <td style='padding: 0; text-align: center;'><input data-grupo='${grupoActivo}' data-idpartido='${p.idPartido}' data-idx='${idx}' data-tipo='local' max='20' min='0' type='number' value='${p.golLocal}'></td>
+            <td style='padding: 0; text-align: center;'>
+              <input data-grupo='${grupoActivo}' data-idpartido='${p.idPartido}' data-idx='${idx}' data-tipo='local' data-local='${p.local}' data-visita='${p.visita}' max='20' min='0' type='number' value='${p.golLocal}'>
+            </td>
             <td class='equipo-fijo'>${obtenerHtmlConBandera(p.visita)}</td>
-            <td style='padding: 0; text-align: center;'><input data-grupo='${grupoActivo}' data-idpartido='${p.idPartido}' data-idx='${idx}' data-tipo='visita' max='20' min='0' type='number' value='${p.golVisita}'></td>
+            <td style='padding: 0; text-align: center;'>
+              <input data-grupo='${grupoActivo}' data-idpartido='${p.idPartido}' data-idx='${idx}' data-tipo='visita' data-local='${p.local}' data-visita='${p.visita}' max='20' min='0' type='number' value='${p.golVisita}'>
+            </td>
           </tr>
         `
           )
           .join('')}
-        </tbody>
+      </tbody>
       <!-- Raul KK -->
         </table>
         <div class='acciones-grupo'>
@@ -16814,11 +16819,41 @@
       });
 
       document.getElementById('guardarGrupo').addEventListener('click', () => {
-        localStorage.setItem(claveGrupo(grupoActivo), JSON.stringify(dataGrupos[grupoActivo]));
-        const fecha = new Date().toLocaleString('es-CL');
-        estadoGuardado.textContent = `Grupo ${grupoActivo} guardado correctamente (${fecha}).`;
-        renderContenidoPrincipal();
+      // Recorremos todos los inputs de goles del panel actual
+      panelGrupo.querySelectorAll('input[type="number"]').forEach((input) => {
+        const grupo = input.dataset.grupo;
+        const idx = parseInt(input.dataset.idx, 10);
+        const tipo = input.dataset.tipo;
+        const val = input.value.trim();
+        
+        // Obtenemos los nombres limpios desde los nuevos atributos data-
+        const localText = input.dataset.local;
+        const visitaText = input.dataset.visita;
+
+        if (!dataGrupos[grupo]) return;
+
+        // Buscamos el partido por nombre o por el índice correlativo
+        const partAsociados = dataGrupos[grupo].filter(p => p.local === localText && p.visita === visitaText);
+        if (partAsociados.length > 0) {
+          partAsociados.forEach(p => {
+            if (tipo === 'local') p.golLocal = val;
+            if (tipo === 'visita') p.golVisita = val;
+          });
+        } else {
+          const p = dataGrupos[grupo][idx];
+          if (p) {
+            if (tipo === 'local') p.golLocal = val;
+            if (tipo === 'visita') p.golVisita = val;
+          }
+        }
       });
+
+      // Guarda de forma definitiva en el navegador
+      localStorage.setItem(claveGrupo(grupoActivo), JSON.stringify(dataGrupos[grupoActivo]));
+      const fecha = new Date().toLocaleString('es-CL');
+      estadoGuardado.textContent = `Grupo ${grupoActivo} guardado correctamente (${fecha}).`;
+      renderContenidoPrincipal();
+    });
 
       document.getElementById('limpiarGrupo').addEventListener('click', () => {
         dataGrupos[grupoActivo] = normalizarSeedGrupo(grupoActivo);
