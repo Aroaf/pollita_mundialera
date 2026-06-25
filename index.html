@@ -396,10 +396,30 @@
 <body>
   <div class='contenedor'>
     <div class='cabecera'>
-      <h1>Pollita Mundial de Futbol 2026</h1>
-      <p class='subtitulo'>Detalle completo de apuestas y panel de resultados por grupo.</p>
-    </div>
-    
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h1 style="margin: 0 0 4px;">Pollita Mundial de Futbol 2026</h1>
+          <p class='subtitulo' style="margin: 0;">Detalle completo de apuestas y panel de resultados por grupo.</p>
+        </div>
+        <a href="https://aroaf.github.io/test/" 
+           target="_blank" 
+           style="display: inline-block; 
+                  background: linear-gradient(135deg, #caa64b, #b8942e); 
+                  color: #0f172a; 
+                  padding: 10px 20px; 
+                  border-radius: 10px; 
+                  text-decoration: none; 
+                  font-weight: 700; 
+                  font-size: 14px;
+                  box-shadow: 0 4px 12px rgba(202, 166, 75, 0.35);
+                  transition: transform 0.2s, box-shadow 0.2s;
+                  white-space: nowrap;"
+           onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 6px 20px rgba(202, 166, 75, 0.5)';"
+           onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(202, 166, 75, 0.35)';">
+          🏆 Clasificados eliminación directa
+        </a>
+      </div>
+    </div>    
 <div class='bloque' id='bloque-en-vivo' style='margin-bottom: 16px;'>
   <h2>⚽ En vivo ahora</h2>
   <div id='widget-en-vivo'><p style='color:#64748b; font-size:13px;'>Cargando...</p></div>
